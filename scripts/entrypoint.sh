@@ -12,8 +12,10 @@ function main() {
     local exit_status=$?
 
     # Cleanup regardless of the status of the command.
-    chmod -Rf 777 out
-    chmod -Rf 666 out/* out.zip
+    if [[ -d out ]] ; then
+        chmod -f 777 out
+        chmod -f 666 out/* out.zip
+    fi
 
     return ${exist_status}
 }
